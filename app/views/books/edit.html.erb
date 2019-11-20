@@ -1,0 +1,43 @@
+<div class="body">
+	<div class="container">
+		<div class="row">
+			<div class="col-md-6 col-md-offset-3">
+				<h1>Editing Book</h1>
+
+				<% if @book.errors.any? %>
+				  <p>error</p>
+				  <div id="error_explanation" class="alert alert-danger">
+				    <ul>
+				      <% @book.errors.full_messages.each do |message| %>
+				        <li><%= message %></li>
+				      <% end %>
+				    </ul>
+				  </div>
+				<% end %>
+
+				<%= form_for(@book) do |f| %>
+
+					<div class="field row">
+						<label>Title</label>
+						<p><%= f.text_field :title, class: "col-xs-12 book_title" %></p>
+					</div>
+
+					<div class="field row">
+						<label>Opinion</label>
+						<p><%= f.text_area :body, class: "col-xs-12 book_body" %><p>
+					</div>
+
+					<div class="action row">
+						<%= f.submit 'Update Book', class: "btn btn-primary col-xs-12" %>
+					</div>
+
+					<%=link_to "Show", book_path %>
+					<%= "|" %>
+					<%= link_to "Back", "/books" %>
+
+				<% end %>
+			</div>
+			<div class="col-md-3"></div>
+		</div>
+	</div>
+</div>
